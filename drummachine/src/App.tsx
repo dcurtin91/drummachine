@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import './App.css'
 
 function App() {
@@ -13,9 +14,26 @@ function App() {
     }
   }
 
-  const handleKeyPress = (event) => {
-    // if key matches element id
+  const handleKeyDown = (event: KeyboardEvent) => {
+   
+    const keyDown = event.key.toUpperCase(); 
+    const drumPad = document.getElementById(keyDown);
+    
+    if (drumPad) {
+      const audio = drumPad.querySelector("audio");
+    if (audio) {
+        audio.play();
+    }
   }
+};
+
+useEffect(() => {
+  window.addEventListener('keydown', handleKeyDown);
+
+  return () => {
+    window.removeEventListener('keydown', handleKeyDown);
+  }
+}, []);
 
   return (
     <>
@@ -23,39 +41,39 @@ function App() {
         
       <div id="display"></div>
 
-      <div className="drum-pad" id="heater1" onClick={play}>
+      <div className="drum-pad" id="Q" onClick={play}>
       <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-1.mp3"></audio>
         Q
       </div>
-      <div className="drum-pad" id="heater2" onClick={play}>
+      <div className="drum-pad" id="W" onClick={play}>
       <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-2.mp3"></audio>
         W
       </div>
-      <div className="drum-pad" id="heater3" onClick={play}>
+      <div className="drum-pad" id="E" onClick={play}>
       <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-3.mp3"></audio>
         E
       </div>
-      <div className="drum-pad" id="heater4" onClick={play}>
+      <div className="drum-pad" id="A" onClick={play}>
       <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-4_1.mp3"></audio>
         A
       </div>
-      <div className="drum-pad" id="clap" onClick={play}>
+      <div className="drum-pad" id="S" onClick={play}>
       <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-6.mp3"></audio>
         S
       </div>
-      <div className="drum-pad" id="openhh" onClick={play}>
+      <div className="drum-pad" id="D" onClick={play}>
       <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Dsc_Oh.mp3"></audio>
         D
       </div>
-      <div className="drum-pad" id="kickhat" onClick={play}>
+      <div className="drum-pad" id="Z" onClick={play}>
       <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Kick_n_Hat.mp3"></audio>
         Z
       </div>
-      <div className="drum-pad" id="kick" onClick={play}>
+      <div className="drum-pad" id="X" onClick={play}>
       <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/RP4_KICK_1.mp3"></audio>
         X
       </div>
-      <div className="drum-pad" id="closedhh" onClick={play}>
+      <div className="drum-pad" id="C" onClick={play}>
       <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Cev_H2.mp3"></audio>
         C
       </div>
