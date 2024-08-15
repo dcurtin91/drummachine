@@ -13,6 +13,10 @@ function App() {
     }
   }
 
+  const handleKeyPress = (event) => {
+    // if key matches element id
+  }
+
   return (
     <>
       <div id="drum-machine">
